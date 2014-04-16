@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="homeContainer">
+    <p>@DateTime.Now</p>
+</div>
+@Ajax.ActionLink("test-ajax","about", new AjaxOptions{ OnSuccess = "AppCoreInstance.PageLoad" })
+
+<script type="text/javascript" src="@Url.Content("/Scripts/vm/home.index.js")"></script>
