@@ -14,10 +14,14 @@ namespace azure_demo.Controllers
     {
         public ActionResult Index()
         {
-
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(); 
+            }
             return View();
         }
 
+        
         //public ActionResult GetMenu()
         //{
 

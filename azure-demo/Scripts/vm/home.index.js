@@ -2,6 +2,7 @@
 
 var HomeVM = function HomeVM() {
     var self = this;
+	debugger; //vm number -> same in heap profile @#?
 
     return self;
 }
