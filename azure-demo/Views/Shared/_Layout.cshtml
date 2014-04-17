@@ -23,8 +23,7 @@
                                 </div>
                                 <div class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav">
-                                        @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
-                                        <li>@Ajax.ActionLink("Load Menu", "getmenu", "api/UI", new AjaxOptions { OnComplete = "AppMenuInstance.load" })</li>
+                                        <li>@Ajax.ActionLink("Load Menu", "getmenu", "api/UI", new AjaxOptions { OnSuccess = "AppMenuInstance.load" })</li>
                                     </ul>
                                 </div>
                             </div>
