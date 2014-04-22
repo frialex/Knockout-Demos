@@ -144,93 +144,94 @@
   left: 0;
 }
 .dl-menu.dl-animate-out {
-  /*-moz-animation: MenuAnimateOut 0.4s;
-    -webkit-animation: MenuAnimateOut 0.4s;
-    animation: MenuAnimateOut 0.4s;*/
+  -moz-animation: MenuAnimateOut 0.3s;
+  -webkit-animation: MenuAnimateOut 0.3s;
+  animation: MenuAnimateOut 0.3s;
 }
 @-webkit-keyframes MenuAnimateOut {
   100% {
-    -webkit-transform: translateY(40%);
+    /*-webkit-transform: translateY(40%);*/
     opacity: 0;
   }
 }
 @keyframes MenuAnimateOut {
   100% {
-    transform: translateY(40%);
+    /*transform: translateY(40%);*/
     opacity: 0;
   }
 }
 .dl-menu.dl-animate-in {
-  /*-webkit-animation: MenuAnimateIn 0.3s;
-    -moz-animation: MenuAnimateIn 0.3s;
-    animation: MenuAnimateIn 0.3s;*/
+  -webkit-animation: MenuAnimateIn 0.3s;
+  -moz-animation: MenuAnimateIn 0.3s;
+  animation: MenuAnimateIn 0.3s;
 }
 @-webkit-keyframes MenuAnimateIn {
   0% {
-    -webkit-transform: transulateY(40%);
+    /*-webkit-transform: transulateY(40%);*/
     opacity: 0;
   }
   100% {
-    -webkit-transform: transulateY(0);
+    /*-webkit-transform: transulateY(0);*/
+    opacity: 1;
   }
 }
 @keyframes MenuAnimateIn {
   0% {
-    transform: transulateY(40%);
+    /*transform: transulateY(40%);*/
     opacity: 0;
   }
   100% {
-    transform: transulateY(0);
+    /*transform: transulateY(0);*/
     opacity: 1;
   }
 }
 .dl-menuwrapper > .dl-submenu.dl-animate-in {
-  /*-webkit-animation: SubMenuAnimateIn 0.4s ease;
-    -moz-animation: SubMenuAnimateIn 0.4s ease;
-    animation: SubMenuAnimateIn 0.4s ease;*/
+  -webkit-animation: SubMenuAnimateIn 0.2s ease;
+  -moz-animation: SubMenuAnimateIn 0.2s ease;
+  animation: SubMenuAnimateIn 0.2s ease;
 }
 @-webkit-keyframes SubMenuAnimateIn {
   0% {
-    -webkit-transform: translateZ(-200px);
+    /*-webkit-transform: translateZ(-200px);*/
     opacity: 0;
   }
   100% {
-    -webkit-transform: translateZ(0);
+    /*-webkit-transform: translateZ(0);*/
     opacity: 1;
   }
 }
 @keyframes SubMenuAnimateIn {
   0% {
-    transform: translateZ(-200px);
+    /*transform: translateZ(-200px);*/
     opacity: 0;
   }
   100% {
-    transform: translateZ(0);
+    /*transform: translateZ(0);*/
     opacity: 1;
   }
 }
 .dl-menuwrapper > .dl-submenu.dl-animate-out {
-  /*-webkit-animation: SubMenuAnimateOut 0.4s ease;
-    -moz-animation: SubMenuAnimateOut 0.4 ease;
-    animation: SubMenuAnimateOut 0.4s ease;*/
+  -webkit-animation: SubMenuAnimateOut 0.2s ease;
+  -moz-animation: SubMenuAnimateOut 0.4 ease;
+  animation: SubMenuAnimateOut 0.2s ease;
 }
 @-webkit-keyframes SubMenuAnimateOut {
   0% {
-    -webkit-transform: translateZ(0);
+    /*-webkit-transform: translateZ(0);*/
     opacity: 1;
   }
   100% {
-    -webkit-transform: translateZ(-200px);
+    /*-webkit-transform: translateZ(-200px);*/
     opacity: 0;
   }
 }
 @keyframes SubMenuAnimateOut {
   0% {
-    transform: translateZ(0);
+    /*transform: translateZ(0);*/
     opacity: 1;
   }
   100% {
-    transform: translate(-200px);
+    /*transform: translate(-200px);*/
     opacity: 0;
   }
 }
