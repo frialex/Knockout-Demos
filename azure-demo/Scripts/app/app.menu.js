@@ -2,7 +2,9 @@
 	var self = this;
         
 	self.load = function (data) {
-	    debugger;
+	    //debugger;
+
+	    ko.applyBindings(data.SubMenu, document.getElementById('HomeContainer'));
 	};
 
 	return self;

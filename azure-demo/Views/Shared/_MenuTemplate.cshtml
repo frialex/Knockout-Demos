@@ -2,10 +2,15 @@
     <div id="dl-menu" class="dl-menuwrapper">
         <button class="dl-trigger">Open Menu</button>
 
+        <ul class="dl-menu" data-bind="template: { name: 'menuItemSub', foreach: $data }">
+        </ul>
     </div>
-
 </script>
 
-<script id="MenuItem" type="text/html"> 
-
+<script id="menuItemSub" type="text/html"> 
+ <li>
+    <a href="#" data-bind="text: Title"></a>
+     
+     <ul class="dl-submenu" data-bind="template: { name: 'menuItemSub', foreach: $data.SubMenu }"></ul>
+ </li>
 </script>

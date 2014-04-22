@@ -1,1 +1,363 @@
-﻿{"Controller":null,"Action":null,"Title":null,"Tooltip":null,"Level":0,"IconClass":null,"SubMenu":[{"Controller":"","Action":"","Title":"Home Page","Tooltip":"Tooltip","Level":2,"IconClass":"glyphicons home","SubMenu":[{"Controller":"Home","Action":"Index/D3C1E295-CFD1-428C-8985-F0FC644511D1","Title":"DrillDown1","Tooltip":"","Level":3,"IconClass":null,"SubMenu":[],"UrlLink":null,"ActionType":1},{"Controller":"Home","Action":"Index/1BFB7FF6-41AD-420C-B822-83A02CA193A3","Title":"fc1","Tooltip":"","Level":3,"IconClass":null,"SubMenu":[],"UrlLink":null,"ActionType":1},{"Controller":"Home","Action":"Index/83EAC87F-749D-4672-88D1-983B66DB8770","Title":"fc2","Tooltip":"","Level":3,"IconClass":null,"SubMenu":[],"UrlLink":null,"ActionType":1},{"Controller":"Home","Action":"Index/612DC503-3AB1-46F1-8EAF-2CE0CD3E1D63","Title":"Information2","Tooltip":"","Level":3,"IconClass":null,"SubMenu":[],"UrlLink":null,"ActionType":1},{"Controller":"Home","Action":"Index/B62543DC-521E-45C5-A691-13CC84086ACD","Title":"tile1","Tooltip":"","Level":3,"IconClass":null,"SubMenu":[],"UrlLink":null,"ActionType":1}],"UrlLink":"","ActionType":1},{"Controller":"","Action":"","Title":"Analysis","Tooltip":"Analysis Tooltip","Level":2,"IconClass":"glyphicons cardio","SubMenu":[{"Controller":"","Action":"","Title":"Exposures","Tooltip":"Exposures Tooltip","Level":3,"IconClass":"","SubMenu":[{"Controller":"Exposures","Action":"Index/839A25CB-DC1D-4C1A-9B1B-92BDBF81AD07","Title":"e1","Tooltip":"","Level":4,"IconClass":null,"SubMenu":[],"UrlLink":null,"ActionType":1},{"Controller":"Exposures","Action":"Index/80DE1586-B221-4A46-8DE2-C0C4A22FAE28","Title":"e4","Tooltip":"","Level":4,"IconClass":null,"SubMenu":[],"UrlLink":null,"ActionType":1}],"UrlLink":"","ActionType":1},{"Controller":"Concentrations","Action":"Index","Title":"Concentrations","Tooltip":"Concentrations Tooltip","Level":3,"IconClass":"","SubMenu":[],"UrlLink":"","ActionType":1},{"Controller":"","Action":"","Title":"Compliance","Tooltip":"Compliance Tooltip","Level":3,"IconClass":"","SubMenu":[{"Controller":"Compliance","Action":"Index/FD94206A-AD9C-4B09-A8E4-C99B111A253D","Title":"My Homepage","Tooltip":"","Level":4,"IconClass":null,"SubMenu":[],"UrlLink":null,"ActionType":1}],"UrlLink":"","ActionType":1},{"Controller":"","Action":"","Title":"Investment Income","Tooltip":"Investment Income Tooltip","Level":3,"IconClass":"","SubMenu":[{"Controller":"InvestmentIncome","Action":"Index/5336F9C3-FC21-41ED-8259-4F6D1CD4B5B2","Title":"ii3dr","Tooltip":"","Level":4,"IconClass":null,"SubMenu":[],"UrlLink":null,"ActionType":1}],"UrlLink":"","ActionType":1},{"Controller":"Analysis","Action":"TopN","Title":"Top N","Tooltip":"TopN Tooltip","Level":3,"IconClass":"","SubMenu":[],"UrlLink":"","ActionType":1},{"Controller":"Analysis","Action":"Statutory","Title":"Statutory Analysis","Tooltip":"Statutory Analysis Tooltip","Level":3,"IconClass":"","SubMenu":[],"UrlLink":"","ActionType":1},{"Controller":"","Action":"","Title":"Analytics","Tooltip":"Analytics","Level":3,"IconClass":null,"SubMenu":[{"Controller":"Analytics","Action":"Index/AD510533-F1D8-42E5-9DDA-854158FAAAD4","Title":"My Analytics","Tooltip":"","Level":4,"IconClass":null,"SubMenu":[],"UrlLink":null,"ActionType":1}],"UrlLink":"","ActionType":1},{"Controller":"MyGrids","Action":"Index","Title":"MyQueries","Tooltip":"MyQueries","Level":3,"IconClass":null,"SubMenu":[],"UrlLink":"","ActionType":1},{"Controller":"","Action":"","Title":"Ratings","Tooltip":"Ratings","Level":3,"IconClass":null,"SubMenu":[{"Controller":"Ratings","Action":"Index/D4BB8393-00A3-46F0-BD85-1ED0EE4D3D19","Title":"r1","Tooltip":"","Level":4,"IconClass":null,"SubMenu":[],"UrlLink":null,"ActionType":1}],"UrlLink":null,"ActionType":1}],"UrlLink":"","ActionType":1},{"Controller":"","Action":"","Title":"Administrator","Tooltip":"Administrator Tooltip","Level":2,"IconClass":"icon-cogs","SubMenu":[{"Controller":"User","Action":"Index","Title":"Users","Tooltip":"Users Tooltip","Level":3,"IconClass":"","SubMenu":[],"UrlLink":"","ActionType":1}],"UrlLink":"","ActionType":1},{"Controller":"","Action":"","Title":"Reporting","Tooltip":"Reporting Tooltip","Level":2,"IconClass":"glyphicons book","SubMenu":[{"Controller":"Document","Action":"IndexPL","Title":"Documents","Tooltip":"Documents Tooltip","Level":3,"IconClass":"","SubMenu":[],"UrlLink":"","ActionType":1},{"Controller":"QueryBuilder","Action":"Index?mode=QueryBuilder","Title":"Query Builder","Tooltip":"Query Builder Tooltip","Level":3,"IconClass":"","SubMenu":[],"UrlLink":"","ActionType":1},{"Controller":"QueryBuilder","Action":"Index?mode=Report","Title":"On Demand","Tooltip":"On Demand Tooltip","Level":3,"IconClass":"","SubMenu":[],"UrlLink":"","ActionType":1}],"UrlLink":"","ActionType":1},{"Controller":" ","Action":" ","Title":"Middle Office","Tooltip":"Middle Office","Level":2,"IconClass":"glyphicons roundabout","SubMenu":[],"UrlLink":" https://secure.globeop.com/go2web/tradeSearch.html","ActionType":2},{"Controller":" ","Action":" ","Title":"Back Office","Tooltip":"Back Office","Level":2,"IconClass":"glyphicons book_open","SubMenu":[],"UrlLink":"https://www.sscgwp.com/web%20security/logon.htm","ActionType":2},{"Controller":"Risk","Action":"Index","Title":"I-Risk","Tooltip":"I-Risk","Level":2,"IconClass":"glyphicons warning_sign","SubMenu":[],"UrlLink":"","ActionType":1}],"UrlLink":null,"ActionType":0}
+﻿
+{
+    "Controller": null,
+    "Action": null,
+    "Title": null,
+    "Tooltip": null,
+    "Level": 0,
+    "IconClass": null,
+    "SubMenu": [
+        {
+            "Controller": "",
+            "Action": "",
+            "Title": "Home Page",
+            "Tooltip": "Tooltip",
+            "Level": 2,
+            "IconClass": "glyphicons home",
+            "SubMenu": [
+                {
+                    "Controller": "Home",
+                    "Action": "Index/D3C1E295-CFD1-428C-8985-F0FC644511D1",
+                    "Title": "DrillDown1",
+                    "Tooltip": "",
+                    "Level": 3,
+                    "IconClass": null,
+                    "SubMenu": [],
+                    "UrlLink": null,
+                    "ActionType": 1
+                },
+                {
+                    "Controller": "Home",
+                    "Action": "Index/1BFB7FF6-41AD-420C-B822-83A02CA193A3",
+                    "Title": "fc1",
+                    "Tooltip": "",
+                    "Level": 3,
+                    "IconClass": null,
+                    "SubMenu": [],
+                    "UrlLink": null,
+                    "ActionType": 1
+                },
+                {
+                    "Controller": "Home",
+                    "Action": "Index/83EAC87F-749D-4672-88D1-983B66DB8770",
+                    "Title": "fc2",
+                    "Tooltip": "",
+                    "Level": 3,
+                    "IconClass": null,
+                    "SubMenu": [],
+                    "UrlLink": null,
+                    "ActionType": 1
+                },
+                {
+                    "Controller": "Home",
+                    "Action": "Index/612DC503-3AB1-46F1-8EAF-2CE0CD3E1D63",
+                    "Title": "Information2",
+                    "Tooltip": "",
+                    "Level": 3,
+                    "IconClass": null,
+                    "SubMenu": [],
+                    "UrlLink": null,
+                    "ActionType": 1
+                },
+                {
+                    "Controller": "Home",
+                    "Action": "Index/B62543DC-521E-45C5-A691-13CC84086ACD",
+                    "Title": "tile1",
+                    "Tooltip": "",
+                    "Level": 3,
+                    "IconClass": null,
+                    "SubMenu": [],
+                    "UrlLink": null,
+                    "ActionType": 1
+                }
+            ],
+            "UrlLink": "",
+            "ActionType": 1
+        },
+        {
+            "Controller": "",
+            "Action": "",
+            "Title": "Analysis",
+            "Tooltip": "Analysis Tooltip",
+            "Level": 2,
+            "IconClass": "glyphicons cardio",
+            "SubMenu": [
+                {
+                    "Controller": "",
+                    "Action": "",
+                    "Title": "Exposures",
+                    "Tooltip": "Exposures Tooltip",
+                    "Level": 3,
+                    "IconClass": "",
+                    "SubMenu": [
+                        {
+                            "Controller": "Exposures",
+                            "Action": "Index/839A25CB-DC1D-4C1A-9B1B-92BDBF81AD07",
+                            "Title": "e1",
+                            "Tooltip": "",
+                            "Level": 4,
+                            "IconClass": null,
+                            "SubMenu": [],
+                            "UrlLink": null,
+                            "ActionType": 1
+                        },
+                        {
+                            "Controller": "Exposures",
+                            "Action": "Index/80DE1586-B221-4A46-8DE2-C0C4A22FAE28",
+                            "Title": "e4",
+                            "Tooltip": "",
+                            "Level": 4,
+                            "IconClass": null,
+                            "SubMenu": [],
+                            "UrlLink": null,
+                            "ActionType": 1
+                        }
+                    ],
+                    "UrlLink": "",
+                    "ActionType": 1
+                },
+                {
+                    "Controller": "Concentrations",
+                    "Action": "Index",
+                    "Title": "Concentrations",
+                    "Tooltip": "Concentrations Tooltip",
+                    "Level": 3,
+                    "IconClass": "",
+                    "SubMenu": [],
+                    "UrlLink": "",
+                    "ActionType": 1
+                },
+                {
+                    "Controller": "",
+                    "Action": "",
+                    "Title": "Compliance",
+                    "Tooltip": "Compliance Tooltip",
+                    "Level": 3,
+                    "IconClass": "",
+                    "SubMenu": [
+                        {
+                            "Controller": "Compliance",
+                            "Action": "Index/FD94206A-AD9C-4B09-A8E4-C99B111A253D",
+                            "Title": "My Homepage",
+                            "Tooltip": "",
+                            "Level": 4,
+                            "IconClass": null,
+                            "SubMenu": [],
+                            "UrlLink": null,
+                            "ActionType": 1
+                        }
+                    ],
+                    "UrlLink": "",
+                    "ActionType": 1
+                },
+                {
+                    "Controller": "",
+                    "Action": "",
+                    "Title": "Investment Income",
+                    "Tooltip": "Investment Income Tooltip",
+                    "Level": 3,
+                    "IconClass": "",
+                    "SubMenu": [
+                        {
+                            "Controller": "InvestmentIncome",
+                            "Action": "Index/5336F9C3-FC21-41ED-8259-4F6D1CD4B5B2",
+                            "Title": "ii3dr",
+                            "Tooltip": "",
+                            "Level": 4,
+                            "IconClass": null,
+                            "SubMenu": [],
+                            "UrlLink": null,
+                            "ActionType": 1
+                        }
+                    ],
+                    "UrlLink": "",
+                    "ActionType": 1
+                },
+                {
+                    "Controller": "Analysis",
+                    "Action": "TopN",
+                    "Title": "Top N",
+                    "Tooltip": "TopN Tooltip",
+                    "Level": 3,
+                    "IconClass": "",
+                    "SubMenu": [],
+                    "UrlLink": "",
+                    "ActionType": 1
+                },
+                {
+                    "Controller": "Analysis",
+                    "Action": "Statutory",
+                    "Title": "Statutory Analysis",
+                    "Tooltip": "Statutory Analysis Tooltip",
+                    "Level": 3,
+                    "IconClass": "",
+                    "SubMenu": [],
+                    "UrlLink": "",
+                    "ActionType": 1
+                },
+                {
+                    "Controller": "",
+                    "Action": "",
+                    "Title": "Analytics",
+                    "Tooltip": "Analytics",
+                    "Level": 3,
+                    "IconClass": null,
+                    "SubMenu": [
+                        {
+                            "Controller": "Analytics",
+                            "Action": "Index/AD510533-F1D8-42E5-9DDA-854158FAAAD4",
+                            "Title": "My Analytics",
+                            "Tooltip": "",
+                            "Level": 4,
+                            "IconClass": null,
+                            "SubMenu": [],
+                            "UrlLink": null,
+                            "ActionType": 1
+                        }
+                    ],
+                    "UrlLink": "",
+                    "ActionType": 1
+                },
+                {
+                    "Controller": "MyGrids",
+                    "Action": "Index",
+                    "Title": "MyQueries",
+                    "Tooltip": "MyQueries",
+                    "Level": 3,
+                    "IconClass": null,
+                    "SubMenu": [],
+                    "UrlLink": "",
+                    "ActionType": 1
+                },
+                {
+                    "Controller": "",
+                    "Action": "",
+                    "Title": "Ratings",
+                    "Tooltip": "Ratings",
+                    "Level": 3,
+                    "IconClass": null,
+                    "SubMenu": [
+                        {
+                            "Controller": "Ratings",
+                            "Action": "Index/D4BB8393-00A3-46F0-BD85-1ED0EE4D3D19",
+                            "Title": "r1",
+                            "Tooltip": "",
+                            "Level": 4,
+                            "IconClass": null,
+                            "SubMenu": [],
+                            "UrlLink": null,
+                            "ActionType": 1
+                        }
+                    ],
+                    "UrlLink": null,
+                    "ActionType": 1
+                }
+            ],
+            "UrlLink": "",
+            "ActionType": 1
+        },
+        {
+            "Controller": "",
+            "Action": "",
+            "Title": "Administrator",
+            "Tooltip": "Administrator Tooltip",
+            "Level": 2,
+            "IconClass": "icon-cogs",
+            "SubMenu": [
+                {
+                    "Controller": "User",
+                    "Action": "Index",
+                    "Title": "Users",
+                    "Tooltip": "Users Tooltip",
+                    "Level": 3,
+                    "IconClass": "",
+                    "SubMenu": [],
+                    "UrlLink": "",
+                    "ActionType": 1
+                }
+            ],
+            "UrlLink": "",
+            "ActionType": 1
+        },
+        {
+            "Controller": "",
+            "Action": "",
+            "Title": "Reporting",
+            "Tooltip": "Reporting Tooltip",
+            "Level": 2,
+            "IconClass": "glyphicons book",
+            "SubMenu": [
+                {
+                    "Controller": "Document",
+                    "Action": "IndexPL",
+                    "Title": "Documents",
+                    "Tooltip": "Documents Tooltip",
+                    "Level": 3,
+                    "IconClass": "",
+                    "SubMenu": [],
+                    "UrlLink": "",
+                    "ActionType": 1
+                },
+                {
+                    "Controller": "QueryBuilder",
+                    "Action": "Index?mode=QueryBuilder",
+                    "Title": "Query Builder",
+                    "Tooltip": "Query Builder Tooltip",
+                    "Level": 3,
+                    "IconClass": "",
+                    "SubMenu": [],
+                    "UrlLink": "",
+                    "ActionType": 1
+                },
+                {
+                    "Controller": "QueryBuilder",
+                    "Action": "Index?mode=Report",
+                    "Title": "On Demand",
+                    "Tooltip": "On Demand Tooltip",
+                    "Level": 3,
+                    "IconClass": "",
+                    "SubMenu": [],
+                    "UrlLink": "",
+                    "ActionType": 1
+                }
+            ],
+            "UrlLink": "",
+            "ActionType": 1
+        },
+        {
+            "Controller": " ",
+            "Action": " ",
+            "Title": "Middle Office",
+            "Tooltip": "Middle Office",
+            "Level": 2,
+            "IconClass": "glyphicons roundabout",
+            "SubMenu": [],
+            "UrlLink": " https://secure.globeop.com/go2web/tradeSearch.html",
+            "ActionType": 2
+        },
+        {
+            "Controller": " ",
+            "Action": " ",
+            "Title": "Back Office",
+            "Tooltip": "Back Office",
+            "Level": 2,
+            "IconClass": "glyphicons book_open",
+            "SubMenu": [],
+            "UrlLink": "https://www.sscgwp.com/web%20security/logon.htm",
+            "ActionType": 2
+        },
+        {
+            "Controller": "Risk",
+            "Action": "Index",
+            "Title": "I-Risk",
+            "Tooltip": "I-Risk",
+            "Level": 2,
+            "IconClass": "glyphicons warning_sign",
+            "SubMenu": [],
+            "UrlLink": "",
+            "ActionType": 1
+        }
+    ],
+    "UrlLink": null,
+    "ActionType": 0
+}
