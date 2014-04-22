@@ -1,9 +1,11 @@
 ﻿
 @ButtonBackground: #ccc;
 @ButtonContentColor: #fff;
+@BackButtonColor: purple;
 
 @ListItemColor: black;
 @ListItemHoverColor: cadetblue;
+@MenuBackgroundColor: aquamarine;
 
 .dl-menuwrapper {
     width: 100%;
@@ -58,7 +60,7 @@
             line-height: 50px;
             speak: none;
             -webkit-font-smoothing: antialiased;
-            content: 'back';
+            content: '';
             /*font-family: 'iconmoon';*/
         }
 
@@ -74,7 +76,7 @@
 
         > a {
             padding-left: 30px;
-            background: rgba(0,0,0,0.1);
+            background: @BackButtonColor; 
         }
     }
 
@@ -89,8 +91,9 @@
     li {
         position: relative;
     }
-        //common style for all menu links
-        li a {
+
+    //common style for all menu links
+    li a {
             display: block;
             position: relative;
             padding: 15px 20px;
@@ -98,6 +101,7 @@
             line-height: 20px;
             font-weight: 300;
             color: @ListItemColor;
+            background-color: @MenuBackgroundColor;
             outline: none;
 
             &:hover {
@@ -161,7 +165,8 @@
     .dl-menu.dl-subview li.dl-subviewopen > .dl-submenu li {
         display: block;
     }
-    //Not sure what this is for
+
+    //Think this is for the menu transitions
     > .dl-submenu {
         width: 100%;
         margin: 0;
@@ -172,17 +177,17 @@
 }
 
 .dl-menu.dl-animate-out {
-    -moz-animation: MenuAnimOut 0.4s;
-    -webkit-animation: MenuAnimOut 0.4s;
-    animation: MenuAnimOut 0.4s;
+    -moz-animation: MenuAnimateOut 0.4s;
+    -webkit-animation: MenuAnimateOut 0.4s;
+    animation: MenuAnimateOut 0.4s;
 }
-@-webkit-keyframes MenuAnimOut {
+@-webkit-keyframes MenuAnimateOut {
     100% {
         -webkit-transform: translateY(40%);
         opacity: 0;
     }
 }
-@keyframes MenuAnimOut {
+@keyframes MenuAnimateOut {
     100% {
         transform: translateY(40%);
         opacity: 0;
@@ -190,11 +195,11 @@
 }
 
 .dl-menu.dl-animate-in {
-    -webkit-animation: MenuAnimIn 0.3s;
-    -moz-animation: MenuAnimIn 0.3s;
-    animation: MenuAnimIn 0.3s;
+    -webkit-animation: MenuAnimateIn 0.3s;
+    -moz-animation: MenuAnimateIn 0.3s;
+    animation: MenuAnimateIn 0.3s;
 }
-@-webkit-keyframes MenuAnimIn {
+@-webkit-keyframes MenuAnimateIn {
     0% {
         -webkit-transform: transulateY(40%);
         opacity: 0;
@@ -203,7 +208,7 @@
         -webkit-transform: transulateY(0);
     }
 }
-@keyframes MenuAnimIn {
+@keyframes MenuAnimateIn {
     0% {
         transform: transulateY(40%);
         opacity: 0;

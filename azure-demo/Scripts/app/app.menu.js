@@ -2,7 +2,9 @@
 	var self = this;
     
 	self.load = function (data) {
-	    ko.applyBindings(data.SubMenu, document.getElementById('HomeContainer'));
+	    ko.applyBindings(data.SubMenu, document.getElementById('TopNavContainer'));
+
+	    test.instantiateDlMenu();
 	};
 
 	function createDOMLink() {

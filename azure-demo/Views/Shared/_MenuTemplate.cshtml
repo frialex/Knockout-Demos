@@ -10,7 +10,8 @@
 <script id="menuItemSub" type="text/html"> 
  <li>
     <a href="#" data-bind="text: Title"></a>
-     
+     <!-- ko if: $data.SubMenu.length > 0 -->
      <ul class="dl-submenu" data-bind="template: { name: 'menuItemSub', foreach: $data.SubMenu }"></ul>
+     <!-- /ko -->
  </li>
 </script>

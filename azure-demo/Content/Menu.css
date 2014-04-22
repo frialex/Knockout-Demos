@@ -46,7 +46,7 @@
   line-height: 50px;
   speak: none;
   -webkit-font-smoothing: antialiased;
-  content: 'back';
+  content: '';
   /*font-family: 'iconmoon';*/
 }
 .dl-menuwrapper li.dl-back:after {
@@ -60,7 +60,7 @@
 }
 .dl-menuwrapper li.dl-back > a {
   padding-left: 30px;
-  background: rgba(0, 0, 0, 0.1);
+  background: #800080;
 }
 .dl-menuwrapper ul {
   padding: 0;
@@ -80,6 +80,7 @@
   line-height: 20px;
   font-weight: 300;
   color: #000000;
+  background-color: #7fffd4;
   outline: none;
 }
 .dl-menuwrapper li a:hover {
@@ -142,28 +143,28 @@
   left: 0;
 }
 .dl-menu.dl-animate-out {
-  -moz-animation: MenuAnimOut 0.4s;
-  -webkit-animation: MenuAnimOut 0.4s;
-  animation: MenuAnimOut 0.4s;
+  -moz-animation: MenuAnimateOut 0.4s;
+  -webkit-animation: MenuAnimateOut 0.4s;
+  animation: MenuAnimateOut 0.4s;
 }
-@-webkit-keyframes MenuAnimOut {
+@-webkit-keyframes MenuAnimateOut {
   100% {
     -webkit-transform: translateY(40%);
     opacity: 0;
   }
 }
-@keyframes MenuAnimOut {
+@keyframes MenuAnimateOut {
   100% {
     transform: translateY(40%);
     opacity: 0;
   }
 }
 .dl-menu.dl-animate-in {
-  -webkit-animation: MenuAnimIn 0.3s;
-  -moz-animation: MenuAnimIn 0.3s;
-  animation: MenuAnimIn 0.3s;
+  -webkit-animation: MenuAnimateIn 0.3s;
+  -moz-animation: MenuAnimateIn 0.3s;
+  animation: MenuAnimateIn 0.3s;
 }
-@-webkit-keyframes MenuAnimIn {
+@-webkit-keyframes MenuAnimateIn {
   0% {
     -webkit-transform: transulateY(40%);
     opacity: 0;
@@ -172,7 +173,7 @@
     -webkit-transform: transulateY(0);
   }
 }
-@keyframes MenuAnimIn {
+@keyframes MenuAnimateIn {
   0% {
     transform: transulateY(40%);
     opacity: 0;
