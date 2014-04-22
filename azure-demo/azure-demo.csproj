@@ -144,6 +144,12 @@
     <Content Include="Content\Home.min.css">
       <DependentUpon>Home.css</DependentUpon>
     </Content>
+    <Content Include="Content\Menu.css">
+      <DependentUpon>Menu.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Menu.min.css">
+      <DependentUpon>Menu.css</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -158,6 +164,10 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="App_Data\FriMenu.json" />
+    <Content Include="Content\Menu.less" />
+    <Content Include="Content\Menu.css.map">
+      <DependentUpon>Menu.css</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\azure-demo-fri.pubxml" />
     <Content Include="Scripts\app\app.main.js" />
     <Content Include="Scripts\app\app.menu.js" />
@@ -167,6 +177,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\jquery.dlmenu.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\knockout-3.1.0.debug.js" />
@@ -188,10 +199,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
-    <Content Include="Views\Home\_PageStart.cshtml" />
+    <Content Include="Views\Shared\_MenuTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

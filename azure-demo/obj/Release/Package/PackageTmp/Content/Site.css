@@ -7,6 +7,9 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 5px;
+    background-color: honeydew;
+    height: 500px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */

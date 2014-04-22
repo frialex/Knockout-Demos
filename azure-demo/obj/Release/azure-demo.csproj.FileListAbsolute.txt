@@ -24,3 +24,9 @@ c:\users\falexander\documents\visual studio 2013\Projects\azure-demo\azure-demo\
 c:\users\falexander\documents\visual studio 2013\Projects\azure-demo\azure-demo\obj\Release\azure-demo.dll
 c:\users\falexander\documents\visual studio 2013\Projects\azure-demo\azure-demo\obj\Release\azure-demo.pdb
 c:\users\falexander\documents\visual studio 2013\Projects\azure-demo\azure-demo\obj\Release\azure-demo.csprojResolveAssemblyReference.cache
+C:\Users\falexander\documents\visual studio 2013\Projects\azure-demo\azure-demo\bin\System.Net.Http.Formatting.dll
+C:\Users\falexander\documents\visual studio 2013\Projects\azure-demo\azure-demo\bin\System.Web.Http.dll
+C:\Users\falexander\documents\visual studio 2013\Projects\azure-demo\azure-demo\bin\System.Web.Http.WebHost.dll
+C:\Users\falexander\documents\visual studio 2013\Projects\azure-demo\azure-demo\bin\System.Net.Http.Formatting.xml
+C:\Users\falexander\documents\visual studio 2013\Projects\azure-demo\azure-demo\bin\System.Web.Http.xml
+C:\Users\falexander\documents\visual studio 2013\Projects\azure-demo\azure-demo\bin\System.Web.Http.WebHost.xml

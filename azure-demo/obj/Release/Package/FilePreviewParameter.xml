@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="IIS Web Application Name" description="" value="azure-demo-fri" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^c:\\users\\falexander\\documents\\visual\ studio\ 2013\\Projects\\azure-demo\\azure-demo\\obj\\Release\\Package\\PackageTmp$" />
-    <parameterEntry kind="ProviderPath" scope="setAcl" match="^c:\\users\\falexander\\documents\\visual\ studio\ 2013\\Projects\\azure-demo\\azure-demo\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\falexander\\documents\\visual\ studio\ 2013\\Projects\\azure-demo\\azure-demo\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\falexander\\documents\\visual\ studio\ 2013\\Projects\\azure-demo\\azure-demo\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="azure-demo-fri/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\falexander\\documents\\visual\ studio\ 2013\\Projects\\azure-demo\\azure-demo\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
   </parameter>
 </parameters>
