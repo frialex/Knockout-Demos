@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript" src="@Url.Content("/Scripts/knockout-3.1.0.debug.js")"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -20,22 +21,25 @@
                 @Ajax.ActionLink("Go Home", "Index", "Home", null,
                                     new AjaxOptions { OnSuccess = "AppCoreInstance.PageLoad" },
                                     new { @class = "navbar-brand" })
-                                </div>
-                                <div class="navbar-collapse collapse">
-                                    <ul class="nav navbar-nav">
-                                        <li>@Ajax.ActionLink("Load Menu", "getmenu", "api/UI", new AjaxOptions { OnSuccess = "AppMenuInstance.load" })</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container body-content">
-                            @RenderBody()
-                            <hr />
-                        </div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Ajax.ActionLink("Load Menu", "getmenu", "api/UI", new AjaxOptions { OnSuccess = "AppMenuInstance.load" })</li>
+                    <li>@Ajax.ActionLink("about", "about", new AjaxOptions { OnSuccess = "AppCoreInstance.PageLoad" })</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
 
-                        @Scripts.Render("~/bundles/jquery")
-                        @Scripts.Render("~/bundles/bootstrap")
-                        @Scripts.Render("~/bundles/app-main")
-                        @RenderSection("scripts", required: false)
-                    </body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/app-main")
+    @RenderSection("scripts", required: false)
+
+    @Html.Partial("_MenuTemplate")
+</body>
 </html>

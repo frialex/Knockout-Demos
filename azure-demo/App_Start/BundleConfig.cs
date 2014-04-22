@@ -23,7 +23,6 @@ namespace azure_demo
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app-main").Include(
-                    "~/Scripts/knockout-3.1.0.js",
                     "~/Scripts/app/app.main.js",
                     "~/Scripts/app/app.menu.js",
                     "~/Scripts/app/app.test.js"

@@ -655,7 +655,7 @@ ko.utils.domData = new (function () {
             }
             return false;
         },
-
+        expose: function(){ return dataStore; },
         nextKey: function () {
             return (uniqueId++) + dataStoreKeyExpandoPropertyName;
         }
