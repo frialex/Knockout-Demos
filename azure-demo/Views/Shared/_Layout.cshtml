@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    <link rel="stylesheet" type="text/css" href="@Url.Content("/Content/Menu.css")" />
     @Scripts.Render("~/bundles/modernizr")
     <script type="text/javascript" src="@Url.Content("/Scripts/knockout-3.1.0.debug.js")"></script>
 </head>
@@ -18,14 +19,14 @@
                     <span class="icon-bar"></span>
                 </button>
                 @*@Html.ActionLink("Home", "Index", "Home", null, new { @class = "navbar-brand" })*@
-                @Ajax.ActionLink("Go Home", "Index", "Home", null,
+                @Ajax.ActionLink("LOGO", "Index", "Home", null,
                                     new AjaxOptions { OnSuccess = "AppCoreInstance.PageLoad" },
                                     new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Ajax.ActionLink("Load Menu", "getmenu", "api/UI", new AjaxOptions { OnSuccess = "AppMenuInstance.load" })</li>
-                    <li>@Ajax.ActionLink("about", "about", new AjaxOptions { OnSuccess = "AppCoreInstance.PageLoad" })</li>
+                    @*<li>@Ajax.ActionLink("about", "about", new AjaxOptions { OnSuccess = "AppCoreInstance.PageLoad" })</li>*@
                 </ul>
             </div>
         </div>

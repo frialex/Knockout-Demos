@@ -1,0 +1,268 @@
+﻿
+@ButtonBackground: #ccc;
+@ButtonContentColor: #fff;
+
+@ListItemColor: black;
+@ListItemHoverColor: cadetblue;
+
+.dl-menuwrapper {
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+    -moz-perspective: 1000px;
+    -ms-perspective: 1000px;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    -moz-perspective-origin: 50% 200%;
+    -ms-perspective-origin: 50% 200%;
+    -webkit-perspective-origin: 50% 200%;
+    perspective-origin: 50% 200%;
+
+    &:first-child {
+        margin-right: 100px;
+    }
+    //open/close button
+    > .dl-trigger {
+        background: @ButtonBackground;
+        border: none;
+        width: 48px;
+        height: 45px;
+        text-indent: -900em;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        outline: none;
+
+        &:hover,
+        &.dl-active {
+            background: #aaa;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 68%;
+            height: 5px;
+            background: @ButtonContentColor;
+            top: 10px;
+            left: 16%;
+            box-shadow: 0 10px 0 @ButtonContentColor, 0 20px 0 @ButtonContentColor;
+        }
+    }
+    //back button
+    li.dl-back {
+        &:after,
+        > a:not(:only-child):after {
+            position: absolute;
+            top: 0;
+            line-height: 50px;
+            speak: none;
+            -webkit-font-smoothing: antialiased;
+            content: 'back';
+            /*font-family: 'iconmoon';*/
+        }
+
+        &:after {
+            left: 10px;
+            color: rgba(212,204,198,0.3);
+            -moz-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        > a {
+            padding-left: 30px;
+            background: rgba(0,0,0,0.1);
+        }
+    }
+
+    ul {
+        padding: 0;
+        list-style: none;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+    }
+
+    li {
+        position: relative;
+    }
+        //common style for all menu links
+        li a {
+            display: block;
+            position: relative;
+            padding: 15px 20px;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 300;
+            color: @ListItemColor;
+            outline: none;
+
+            &:hover {
+                background-color: @ListItemHoverColor;
+            }
+
+            &:after {
+                right: 10px;
+                color: rgba(0,0,0,0.15);
+            }
+        }
+
+    > .dl-menu {
+        width: 100%;
+        margin: 5px 0 0 0;
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+        -moz-transform: translateY(10px);
+        -webkit-transform: translateY(10px);
+        -ms-transform: translateY(10px);
+        -o-transform: translateY(10px);
+        transform: translateY(10px);
+        -moz-backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+
+        &.dl-menu-toggle {
+            -moz-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+        }
+
+        &.dl-menuopen {
+            opacity: 1;
+            pointer-events: auto;
+            -moz-transform: translateY(0);
+            -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+            -o-transform: translateY(0);
+            transform: translateY(0);
+        }
+    }
+
+    .dl-submenu {
+        display: none;
+    }
+    //Hide items that are not selected
+    .dl-menu.dl-subview li, //menu root
+    .dl-menu.dl-subview li.dl-subviewopen > a, //link user clicked on
+    .dl-menu.dl-subview li.dl-subview > a {
+        display: none;
+    }
+
+    //Show child items of the selected item
+    .dl-menu.dl-subview li.dl-subview,
+    .dl-menu.dl-subview li.dl-subview .dl-submenu,
+    .dl-menu.dl-subview li.dl-subviewopen,
+    .dl-menu.dl-subview li.dl-subviewopen > .dl-submenu,
+    .dl-menu.dl-subview li.dl-subviewopen > .dl-submenu li {
+        display: block;
+    }
+    //Not sure what this is for
+    > .dl-submenu {
+        width: 100%;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.dl-menu.dl-animate-out {
+    -moz-animation: MenuAnimOut 0.4s;
+    -webkit-animation: MenuAnimOut 0.4s;
+    animation: MenuAnimOut 0.4s;
+}
+@-webkit-keyframes MenuAnimOut {
+    100% {
+        -webkit-transform: translateY(40%);
+        opacity: 0;
+    }
+}
+@keyframes MenuAnimOut {
+    100% {
+        transform: translateY(40%);
+        opacity: 0;
+    }
+}
+
+.dl-menu.dl-animate-in {
+    -webkit-animation: MenuAnimIn 0.3s;
+    -moz-animation: MenuAnimIn 0.3s;
+    animation: MenuAnimIn 0.3s;
+}
+@-webkit-keyframes MenuAnimIn {
+    0% {
+        -webkit-transform: transulateY(40%);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: transulateY(0);
+    }
+}
+@keyframes MenuAnimIn {
+    0% {
+        transform: transulateY(40%);
+        opacity: 0;
+    }
+    100% {
+        transform: transulateY(0);
+        opacity: 1;
+    }
+}
+
+
+.dl-menuwrapper > .dl-submenu.dl-animate-in {
+    -webkit-animation: SubMenuAnimateIn 0.4s ease;
+    -moz-animation: SubMenuAnimateIn 0.4s ease;
+    animation: SubMenuAnimateIn 0.4s ease;
+}
+@-webkit-keyframes SubMenuAnimateIn {
+    0% {
+        -webkit-transform: translateZ(-200px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateZ(0);
+        opacity: 1;
+    }
+}
+@keyframes SubMenuAnimateIn {
+    0% {
+        transform: translateZ(-200px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
+
+.dl-menuwrapper > .dl-submenu.dl-animate-out {
+    -webkit-animation: SubMenuAnimateOut 0.4s ease;
+    -moz-animation: SubMenuAnimateOut 0.4 ease;
+    animation: SubMenuAnimateOut 0.4s ease;
+}
+@-webkit-keyframes SubMenuAnimateOut {
+    0% {
+        -webkit-transform: translateZ(0);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translateZ(-200px);
+        opacity: 0;
+    }
+}
+@keyframes SubMenuAnimateOut {
+    0% {
+        transform: translateZ(0);
+        opacity: 1;
+    }
+    100% { 
+        transform: translate(-200px); 
+        opacity: 0;
+    }
+}
