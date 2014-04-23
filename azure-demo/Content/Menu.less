@@ -1,4 +1,5 @@
-﻿
+﻿@ClientColor: #2c516a;
+
 @ButtonBackground: #ccc;
 @ButtonContentColor: #fff;
 @ButtonActiveHoverColor: #aaa;
@@ -9,6 +10,8 @@
 @ListItemColor: black;
 @ListItemHoverColor: cadetblue;
 @MenuBackgroundColor: aquamarine;
+//TODO: Instead of setting display: none, the menu is hidden
+//with opacity 0. Change this to display: none;
 
 .dl-menuwrapper {
     width: 100%;
@@ -65,50 +68,75 @@
             -webkit-font-smoothing: antialiased;
             content: '\f190';
             font-family: 'FontAwesome';
-
             left: 10px;
             color: @BackButtonIconColor;
         }
 
         > a {
             padding-left: 30px;
+            display: block;
             background: @BackButtonColor;
         }
     }
 
+    //common style for all menu links
     ul {
         padding: 0;
         list-style: none;
         -webkit-transform-style: preserve-3d;
         -moz-transform-style: preserve-3d;
         transform-style: preserve-3d;
-    }
 
-    li {
-        position: relative;
-    }
-        //common style for all menu links
-        li a {
-            display: block;
+        li {
             position: relative;
-            padding: 15px 20px;
-            font-size: 16px;
-            line-height: 20px;
-            font-weight: 300;
-            color: @ListItemColor;
             background-color: @MenuBackgroundColor;
-            text-decoration: none;
-            outline: none;
 
             &:hover {
                 background-color: @ListItemHoverColor;
             }
+        }
+    }
 
-            &:after {
-                right: 10px;
-                color: rgba(0,0,0,0.15);
+    li a {
+        position: relative;
+        padding: 15px 20px;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 300;
+        color: @ListItemColor;
+        text-decoration: none;
+        outline: none;
+
+
+        //what is this for??
+        /*&:after {
+            right: 10px;
+            color: rgba(0,0,0,0.15);
+        }*/
+    }
+
+    li.iconed-item {
+        > a {
+            display: inline-block;
+            padding-left: 0;
+        }
+
+        > i.glyphicons {
+            width: 30px;
+            height: 30px;
+
+            &:before {
+                color: white;
+                padding-left: 15px;
             }
         }
+    }
+
+    li.non-iconed-item {
+        a {
+            display: block;
+        }
+    }
 
     > .dl-menu {
         width: 100%;
@@ -147,19 +175,30 @@
         display: none;
     }
     //Hide items that are not selected
-    .dl-menu.dl-subview li, //menu root
-    .dl-menu.dl-subview li.dl-subviewopen > a, //link user clicked on
-    .dl-menu.dl-subview li.dl-subview > a {
-        display: none;
-    }
-        //Show child items of the selected item
-        .dl-menu.dl-subview li.dl-subview,
-        .dl-menu.dl-subview li.dl-subview .dl-submenu,
-        .dl-menu.dl-subview li.dl-subviewopen,
-        .dl-menu.dl-subview li.dl-subviewopen > .dl-submenu,
-        .dl-menu.dl-subview li.dl-subviewopen > .dl-submenu li {
-            display: block;
+
+    //Selectivly show/hide menu tree
+    .dl-menu.dl-subview {
+        li { display: none; }
+
+        li.dl-subview {
+            display: block; 
+            .dl-submenu { display: block; }
+            > a { display: none; }
+
         }
+
+        li.dl-subviewopen {
+            display: block;
+            > .dl-submenu {
+                display: block;
+                li { display: block ;}
+            }
+
+            //this is the parents link item (which user clicked on)
+            > a, > i { display: none; }
+        }
+    }
+
     //Think this is for the menu transitions
     > .dl-submenu {
         width: 100%;
@@ -176,12 +215,14 @@
     -webkit-animation: MenuAnimateOut 0.3s;
     animation: MenuAnimateOut 0.3s;
 }
+
 @-webkit-keyframes MenuAnimateOut {
     100% {
         /*-webkit-transform: translateY(40%);*/
         opacity: 0;
     }
 }
+
 @keyframes MenuAnimateOut {
     100% {
         /*transform: translateY(40%);*/
@@ -194,21 +235,25 @@
     -moz-animation: MenuAnimateIn 0.3s;
     animation: MenuAnimateIn 0.3s;
 }
+
 @-webkit-keyframes MenuAnimateIn {
     0% {
         /*-webkit-transform: transulateY(40%);*/
         opacity: 0;
     }
+
     100% {
         /*-webkit-transform: transulateY(0);*/
         opacity: 1;
     }
 }
+
 @keyframes MenuAnimateIn {
     0% {
         /*transform: transulateY(40%);*/
         opacity: 0;
     }
+
     100% {
         /*transform: transulateY(0);*/
         opacity: 1;
@@ -221,21 +266,25 @@
     -moz-animation: SubMenuAnimateIn 0.2s ease;
     animation: SubMenuAnimateIn 0.2s ease;
 }
+
 @-webkit-keyframes SubMenuAnimateIn {
     0% {
         /*-webkit-transform: translateZ(-200px);*/
         opacity: 0;
     }
+
     100% {
         /*-webkit-transform: translateZ(0);*/
         opacity: 1;
     }
 }
+
 @keyframes SubMenuAnimateIn {
     0% {
         /*transform: translateZ(-200px);*/
         opacity: 0;
     }
+
     100% {
         /*transform: translateZ(0);*/
         opacity: 1;
@@ -247,23 +296,32 @@
     -moz-animation: SubMenuAnimateOut 0.4 ease;
     animation: SubMenuAnimateOut 0.2s ease;
 }
+
 @-webkit-keyframes SubMenuAnimateOut {
     0% {
         /*-webkit-transform: translateZ(0);*/
         opacity: 1;
     }
+
     100% {
         /*-webkit-transform: translateZ(-200px);*/
         opacity: 0;
     }
 }
+
 @keyframes SubMenuAnimateOut {
     0% {
         /*transform: translateZ(0);*/
         opacity: 1;
     }
-    100% { 
-        /*transform: translate(-200px);*/ 
+
+    100% {
+        /*transform: translate(-200px);*/
         opacity: 0;
     }
+}
+
+
+#TopNavContainer {
+    background-color: @ClientColor;
 }

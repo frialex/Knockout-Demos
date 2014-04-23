@@ -262,7 +262,7 @@
             "Title": "Administrator",
             "Tooltip": "Administrator Tooltip",
             "Level": 2,
-            "IconClass": "icon-cogs",
+            "IconClass": "glyphicons cogwheels",
             "SubMenu": [
                 {
                     "Controller": "User",

@@ -8,8 +8,13 @@
 </script>
 
 <script id="menuItemSub" type="text/html"> 
- <li>
-    <a href="#" data-bind="text: Title"></a>
+ <li data-bind="attr: { class: AppMenuInstance.itemHasIcon($data.IconClass) ? 'iconed-item' : 'non-iconed-item'}">
+     <!-- ko if: AppMenuInstance.itemHasIcon($data.IconClass) -->
+        <i data-bind="attr: { class: $data.IconClass }"></i>
+     <!-- /ko -->
+
+    <a href="#" data-bind="text: Title" ></a>
+
      <!-- ko if: $data.SubMenu.length > 0 -->
      <ul class="dl-submenu" data-bind="template: { name: 'menuItemSub', foreach: $data.SubMenu }"></ul>
      <!-- /ko -->

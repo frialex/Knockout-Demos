@@ -11,6 +11,14 @@
 	    var $root = $("#dl-menu");
 	}
 
+	self.itemHasIcon = function(item){
+	    if (item === null || item.length === 0 ) {
+	        return false;
+	    } else {
+            return true
+	    }
+	}
+
 	return self;
 };
 
