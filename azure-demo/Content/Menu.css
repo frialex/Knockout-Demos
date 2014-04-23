@@ -27,7 +27,7 @@
 }
 .dl-menuwrapper > .dl-trigger:hover,
 .dl-menuwrapper > .dl-trigger.dl-active {
-  background: #aaa;
+  background: #aaaaaa;
 }
 .dl-menuwrapper > .dl-trigger:after {
   content: '';

@@ -1,7 +1,10 @@
 ﻿
 @ButtonBackground: #ccc;
 @ButtonContentColor: #fff;
+@ButtonActiveHoverColor: #aaa;
+
 @BackButtonColor: purple;
+@BackButtonIconColor: rgba(212,204,198,0.3);
 
 @ListItemColor: black;
 @ListItemHoverColor: cadetblue;
@@ -37,7 +40,7 @@
 
         &:hover,
         &.dl-active {
-            background: #aaa;
+            background: @ButtonActiveHoverColor;
         }
 
         &:after {
@@ -64,7 +67,7 @@
             font-family: 'FontAwesome';
 
             left: 10px;
-            color: rgba(212,204,198,0.3);
+            color: @BackButtonIconColor;
         }
 
         > a {
