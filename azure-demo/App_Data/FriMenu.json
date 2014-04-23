@@ -29,7 +29,7 @@
                 {
                     "Controller": "Home",
                     "Action": "Index/1BFB7FF6-41AD-420C-B822-83A02CA193A3",
-                    "Title": "fc1",
+                    "Title": "FourChart",
                     "Tooltip": "",
                     "Level": 3,
                     "IconClass": null,
@@ -40,7 +40,7 @@
                 {
                     "Controller": "Home",
                     "Action": "Index/83EAC87F-749D-4672-88D1-983B66DB8770",
-                    "Title": "fc2",
+                    "Title": "Market Analytics",
                     "Tooltip": "",
                     "Level": 3,
                     "IconClass": null,
@@ -51,7 +51,7 @@
                 {
                     "Controller": "Home",
                     "Action": "Index/612DC503-3AB1-46F1-8EAF-2CE0CD3E1D63",
-                    "Title": "Information2",
+                    "Title": "Portfolio Information",
                     "Tooltip": "",
                     "Level": 3,
                     "IconClass": null,
@@ -62,7 +62,7 @@
                 {
                     "Controller": "Home",
                     "Action": "Index/B62543DC-521E-45C5-A691-13CC84086ACD",
-                    "Title": "tile1",
+                    "Title": "Infotile Page",
                     "Tooltip": "",
                     "Level": 3,
                     "IconClass": null,
@@ -93,7 +93,7 @@
                         {
                             "Controller": "Exposures",
                             "Action": "Index/839A25CB-DC1D-4C1A-9B1B-92BDBF81AD07",
-                            "Title": "e1",
+                            "Title": "Market Exposure",
                             "Tooltip": "",
                             "Level": 4,
                             "IconClass": null,
@@ -104,7 +104,7 @@
                         {
                             "Controller": "Exposures",
                             "Action": "Index/80DE1586-B221-4A46-8DE2-C0C4A22FAE28",
-                            "Title": "e4",
+                            "Title": "Foreign Exposure",
                             "Tooltip": "",
                             "Level": 4,
                             "IconClass": null,

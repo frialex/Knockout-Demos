@@ -1,21 +1,22 @@
 ﻿@ClientColor: #2c516a;
 
-@ButtonBackground: #ccc;
+@ButtonBackground: multiply(@ClientColor, #ccc);
 @ButtonContentColor: #fff;
-@ButtonActiveHoverColor: #aaa;
+@ButtonActiveHoverColor: multiply(@ClientColor,  #aaa);
 
-@BackButtonColor: purple;
+@BackButtonColor: multiply(@ClientColor, #ccc);
 @BackButtonIconColor: rgba(212,204,198,0.3);
 
 @ListItemColor: black;
-@ListItemHoverColor: cadetblue;
-@MenuBackgroundColor: aquamarine;
+@ListItemHoverColor: overlay(@ClientColor, #ccc);
+@MenuBackgroundColor: overlay(@ClientColor, #aaa);
+
 //TODO: Instead of setting display: none, the menu is hidden
 //with opacity 0. Change this to display: none;
 
 .dl-menuwrapper {
     width: 100%;
-    max-width: 300px;
+    max-width: 250px;
     position: relative;
     -moz-perspective: 1000px;
     -ms-perspective: 1000px;
@@ -153,6 +154,10 @@
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
 
+        -webkit-box-shadow: 5px 5px 1px 0px rgba(50, 50, 50, 0.5);
+        -moz-box-shadow:    5px 5px 2px 0px rgba(50, 50, 50, 0.5);
+        box-shadow:         5px 5px 2px 0px rgba(50, 50, 50, 0.5);
+
         &.dl-menu-toggle {
             -moz-transition: all 0.3s ease;
             -o-transition: all 0.3s ease;
@@ -183,7 +188,8 @@
         li.dl-subview {
             display: block; 
             .dl-submenu { display: block; }
-            > a { display: none; }
+            > a, > i { display: none; }
+            
 
         }
 

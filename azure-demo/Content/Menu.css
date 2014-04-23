@@ -1,6 +1,6 @@
 ﻿.dl-menuwrapper {
   width: 100%;
-  max-width: 300px;
+  max-width: 250px;
   position: relative;
   -moz-perspective: 1000px;
   -ms-perspective: 1000px;
@@ -15,7 +15,7 @@
   margin-right: 100px;
 }
 .dl-menuwrapper > .dl-trigger {
-  background: #cccccc;
+  background: #234155;
   border: none;
   width: 48px;
   height: 45px;
@@ -27,7 +27,7 @@
 }
 .dl-menuwrapper > .dl-trigger:hover,
 .dl-menuwrapper > .dl-trigger.dl-active {
-  background: #aaaaaa;
+  background: #1d3647;
 }
 .dl-menuwrapper > .dl-trigger:after {
   content: '';
@@ -56,7 +56,7 @@
 .dl-menuwrapper li.dl-back > a {
   padding-left: 30px;
   display: block;
-  background: #800080;
+  background: #234155;
 }
 .dl-menuwrapper ul {
   padding: 0;
@@ -67,10 +67,10 @@
 }
 .dl-menuwrapper ul li {
   position: relative;
-  background-color: #7fffd4;
+  background-color: #3b6c8d;
 }
 .dl-menuwrapper ul li:hover {
-  background-color: #5f9ea0;
+  background-color: #4682aa;
 }
 .dl-menuwrapper li a {
   position: relative;
@@ -115,6 +115,9 @@
   -moz-backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  -webkit-box-shadow: 5px 5px 1px 0px rgba(50, 50, 50, 0.5);
+  -moz-box-shadow: 5px 5px 2px 0px rgba(50, 50, 50, 0.5);
+  box-shadow: 5px 5px 2px 0px rgba(50, 50, 50, 0.5);
 }
 .dl-menuwrapper > .dl-menu.dl-menu-toggle {
   -moz-transition: all 0.3s ease;
@@ -143,7 +146,8 @@
 .dl-menuwrapper .dl-menu.dl-subview li.dl-subview .dl-submenu {
   display: block;
 }
-.dl-menuwrapper .dl-menu.dl-subview li.dl-subview > a {
+.dl-menuwrapper .dl-menu.dl-subview li.dl-subview > a,
+.dl-menuwrapper .dl-menu.dl-subview li.dl-subview > i {
   display: none;
 }
 .dl-menuwrapper .dl-menu.dl-subview li.dl-subviewopen {
