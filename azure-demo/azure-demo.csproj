@@ -138,6 +138,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\glyphicons.css" />
     <Content Include="Content\Home.css">
       <DependentUpon>Home.less</DependentUpon>
     </Content>
@@ -151,7 +153,9 @@
       <DependentUpon>Menu.css</DependentUpon>
     </Content>
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Home.less" />
@@ -168,6 +172,13 @@
     <Content Include="Content\Menu.css.map">
       <DependentUpon>Menu.css</DependentUpon>
     </Content>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-regular.eot" />
+    <Content Include="fonts\glyphicons-regular.ttf" />
+    <Content Include="fonts\glyphicons-regular.woff" />
     <None Include="Properties\PublishProfiles\azure-demo-fri.pubxml" />
     <Content Include="Scripts\app\app.main.js" />
     <Content Include="Scripts\app\app.menu.js" />
