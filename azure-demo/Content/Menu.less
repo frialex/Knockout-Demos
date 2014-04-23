@@ -53,30 +53,23 @@
     }
     //back button
     li.dl-back {
-        &:after,
-        > a:not(:only-child):after {
+        /*> a:not(:only-child):after Not sure why this is needed*/
+        &:after {
             position: absolute;
             top: 0;
             line-height: 50px;
             speak: none;
             -webkit-font-smoothing: antialiased;
-            content: '';
-            /*font-family: 'iconmoon';*/
-        }
+            content: '\f190';
+            font-family: 'FontAwesome';
 
-        &:after {
             left: 10px;
             color: rgba(212,204,198,0.3);
-            -moz-transform: rotate(180deg);
-            -webkit-transform: rotate(180deg);
-            -ms-transform: rotate(180deg);
-            -o-transform: rotate(180deg);
-            transform: rotate(180deg);
         }
 
         > a {
             padding-left: 30px;
-            background: @BackButtonColor; 
+            background: @BackButtonColor;
         }
     }
 
@@ -91,9 +84,8 @@
     li {
         position: relative;
     }
-
-    //common style for all menu links
-    li a {
+        //common style for all menu links
+        li a {
             display: block;
             position: relative;
             padding: 15px 20px;
@@ -157,16 +149,14 @@
     .dl-menu.dl-subview li.dl-subview > a {
         display: none;
     }
-
-    //Show child items of the selected item
-    .dl-menu.dl-subview li.dl-subview,
-    .dl-menu.dl-subview li.dl-subview .dl-submenu,
-    .dl-menu.dl-subview li.dl-subviewopen,
-    .dl-menu.dl-subview li.dl-subviewopen > .dl-submenu,
-    .dl-menu.dl-subview li.dl-subviewopen > .dl-submenu li {
-        display: block;
-    }
-
+        //Show child items of the selected item
+        .dl-menu.dl-subview li.dl-subview,
+        .dl-menu.dl-subview li.dl-subview .dl-submenu,
+        .dl-menu.dl-subview li.dl-subviewopen,
+        .dl-menu.dl-subview li.dl-subviewopen > .dl-submenu,
+        .dl-menu.dl-subview li.dl-subviewopen > .dl-submenu li {
+            display: block;
+        }
     //Think this is for the menu transitions
     > .dl-submenu {
         width: 100%;
@@ -177,6 +167,7 @@
     }
 }
 
+//Animations
 .dl-menu.dl-animate-out {
     -moz-animation: MenuAnimateOut 0.3s;
     -webkit-animation: MenuAnimateOut 0.3s;

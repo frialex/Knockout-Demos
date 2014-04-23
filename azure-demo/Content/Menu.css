@@ -39,24 +39,19 @@
   left: 16%;
   box-shadow: 0 10px 0 #ffffff, 0 20px 0 #ffffff;
 }
-.dl-menuwrapper li.dl-back:after,
-.dl-menuwrapper li.dl-back > a:not(:only-child):after {
+.dl-menuwrapper li.dl-back {
+  /*> a:not(:only-child):after Not sure why this is needed*/
+}
+.dl-menuwrapper li.dl-back:after {
   position: absolute;
   top: 0;
   line-height: 50px;
   speak: none;
   -webkit-font-smoothing: antialiased;
-  content: '';
-  /*font-family: 'iconmoon';*/
-}
-.dl-menuwrapper li.dl-back:after {
+  content: '\f190';
+  font-family: 'FontAwesome';
   left: 10px;
   color: rgba(212, 204, 198, 0.3);
-  -moz-transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
 }
 .dl-menuwrapper li.dl-back > a {
   padding-left: 30px;
