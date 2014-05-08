@@ -626,7 +626,18 @@ ko.utils.domData = new (function () {
         if (!hasExistingDataStore) {
             if (!createIfNotFound)
                 return undefined;
-            dataStoreKey = node[dataStoreKeyExpandoPropertyName] = "ko" + uniqueId++;
+            //debugger; //add node name to the key
+            var nodeName = "(#" + node.id + ")"
+            if (node.id === undefined) {
+                nodeName = "(Comment) " + node.nodeValue;
+            } else if (node.id.length === 0) {
+                if (node.attributes['data-bind'] === undefined) {
+                    nodeName = "(outerHTML) " + node.outerHTML;
+                } else {
+                    nodeName = "(data-bind) " + node.attributes['data-bind'].value;
+                }
+            }
+            dataStoreKey = node[dataStoreKeyExpandoPropertyName] = "ko" + uniqueId++ + nodeName;
             dataStore[dataStoreKey] = {};
         }
         return dataStore[dataStoreKey];
@@ -658,6 +669,9 @@ ko.utils.domData = new (function () {
         expose: function(){ return dataStore; },
         nextKey: function () {
             return (uniqueId++) + dataStoreKeyExpandoPropertyName;
+        },
+        peek: function () {
+            return dataStore;
         }
     };
 })();
@@ -2414,7 +2428,7 @@ ko.exportSymbol('virtualElements.setDomNodeChildren', ko.virtualElements.setDomN
                 var bindingFunction = createBindingsStringEvaluatorViaCache(bindingsString, this.bindingCache, options);
                 return bindingFunction(bindingContext, node);
             } catch (ex) {
-                ex.message = "Unable to parse bindings.\nBindings value: " + bindingsString + "\nMessage: " + ex.message;
+                ex.message = "Unable to parse bindings.\nBindings value: " + bindingsString + "\nMessage: " + ex.message + "\n\n Stack:" + ex.stack;
                 throw ex;
             }
         }
