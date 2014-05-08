@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using azure_demo.Models;
 
 namespace azure_demo.Models
 {

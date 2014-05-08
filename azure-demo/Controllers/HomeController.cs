@@ -21,32 +21,13 @@ namespace azure_demo.Controllers
             return View();
         }
 
-        
-        //public ActionResult GetMenu()
-        //{
-
-        //    var json_path = Server.MapPath("/App_Data/FriMenu.json");
-        //    using (StreamReader r = new StreamReader(json_path))
-        //    {
-        //        string json = r.ReadToEnd();
-        //        Menu menu = JsonConvert.DeserializeObject<Menu>(json);
-
-        //        return Json(menu, JsonRequestBehavior.AllowGet);
-        //    }
-        //}
-
-        public ActionResult About()
+        public ActionResult MemoryLeak()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return PartialView();
+            if(Request.IsAjaxRequest()){
+                return PartialView();
+            }
+            return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return PartialView();
-        }
     }
 }
