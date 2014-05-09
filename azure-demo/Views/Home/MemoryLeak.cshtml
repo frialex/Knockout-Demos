@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "MemoryLeak";
+    Layout = Request.IsAjaxRequest() ? null : "~/Views/Shared/_basicLayout.cshtml";
+}
+
+@Html.Partial("_kotemplates")
+
+
+
+<button id="switchTemplates" data-bind="click: switchTemplates">Switch template</button>
+<button id="changeObservable" data-bind="click: changeObservable">Change Observable</button>
+<button id="ajaxCall" data-bind="click: leaker.replace">$.get and replace</button>
+<div data-bind="template: { name: templateName, data: $data, beforeRemove: cleanNode }"></div>
+
+<script type="text/javascript" src="~/Scripts/memoryleak/mainViewModel.js"></script>

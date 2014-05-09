@@ -1,0 +1,25 @@
+﻿<html>
+<head>
+    <title>ko memory leak</title>
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript" src='@Url.Content("/Scripts/knockout-3.1.0.debug.js")'></script>
+</head>
+<body>
+    <div id="bodyContent">
+        @RenderBody()
+    </div>
+
+    <script>
+        $(document).keypress(function GlobalKeyboardShortcutHandler(e) {
+            switch (e.which) {
+                case 97: $("#switchTemplates").trigger('click');  //a
+                    break;
+                case 115: $("#changeObservable").trigger('click'); //s
+                    break;
+                case 100: $("#ajaxCall").trigger('click');         //d
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

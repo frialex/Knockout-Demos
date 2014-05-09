@@ -1,0 +1,29 @@
+﻿
+<script type="text/html" id="t1">
+    <h2>Template one</h2>
+
+    <!-- ko if: showSecondArray-->
+        <div data-bind="foreach: thirdArray">
+            <p data-bind="click: $root.switchTemplates, text: $data"></p>
+        </div>
+    <!-- /ko -->
+
+    <div data-bind="foreach: firstArray">
+        <p data-bind="text: $data"></p>
+    </div>
+
+</script>
+
+<script type="text/html" id="t2">
+    <h2>Template Two</h2>
+    <!-- ko if: showfirstArray-->
+    <div data-bind="foreach: secondArray">
+        <p data-bind="text: $data"></p>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: showSecondArray-->
+        <div data-bind="foreach: thirdArray">
+            <p data-bind="click: $root.switchTemplates, text: $data"></p>
+        </div>
+    <!-- /ko -->
+</script>
