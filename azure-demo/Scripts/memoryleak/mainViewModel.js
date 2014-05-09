@@ -96,5 +96,29 @@ var viewModelInstance = new viewClass();
 ko.cleanNode(document.getElementById('bodyContent'));
 ko.applyBindings(viewModelInstance, document.getElementById('bodyContent'));
 
+
+
+var watchDogStartTime;
+function koDomDataWatchDog() {
+    console.log("DomData Length: " + Object.keys(ko.utils.domData.peek()).length);
+}
+var koDomDataWatchDogTimer;
+function startKoDomDataWatchDog() {
+    console.log("Starting KO watch dog");
+    watchDogStartTime = new Date();
+    koDomDataWatchDogTimer = setInterval(koDomDataWatchDog, 2000);
+}
+function stopKoDomDataWatchDog() {
+    clearInterval(koDomDataWatchDogTimer);
+    var d = new Date();
+    console.log("Watch dog started @(min:sec:ms) " + watchDogStartTime.getMinutes() + ":" + watchDogStartTime.getSeconds() + ":" + watchDogStartTime.getMilliseconds());
+    console.log("Watch dog stopped @(min:sec:ms) " + d.getMinutes() + ":" + d.getSeconds() + ":" + d.getMilliseconds());
+    return ko.utils.domData.peek();
+}
+
+startKoDomDataWatchDog();
+
+
+
 //Get rid of those VM###.js in chrome by associating this with a file name
 //@ sourceURL=demo-site.local/Scripts/memoryleak/mainViewModel.js

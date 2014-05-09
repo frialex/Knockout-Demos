@@ -2,9 +2,9 @@
 // (c) Steven Sanderson - http://knockoutjs.com/
 // License: MIT (http://www.opensource.org/licenses/mit-license.php)
 
-(function(){
+(function koGlobalScope(){
 var DEBUG=true;
-(function(undefined){
+(function koInnterScope(undefined){
     // (0, eval)('this') is a robust way of getting a reference to the global object
     // For details, see http://stackoverflow.com/questions/14119988/return-this-0-evalthis/14120023#14120023
     var window = this || (0, eval)('this'),
@@ -12,7 +12,7 @@ var DEBUG=true;
         navigator = window['navigator'],
         jQuery = window["jQuery"],
         JSON = window["JSON"];
-(function(factory) {
+(function koFactoryConstructor(factory) {
     // Support three module loading scenarios
     if (typeof require === 'function' && typeof exports === 'object' && typeof module === 'object') {
         // [1] CommonJS/Node.js
@@ -25,7 +25,7 @@ var DEBUG=true;
         // [3] No module loader (plain <script> tag) - put directly in global namespace
         factory(window['ko'] = {});
     }
-}(function(koExports){
+}(function koFactory(koExports){
 // Internally, all KO objects are attached to koExports (even the non-exported ones whose names will be minified by the closure compiler).
 // In the future, the following "ko" variable may be made distinct from "koExports" so that private objects are not externally reachable.
 var ko = typeof koExports !== 'undefined' ? koExports : {};
@@ -47,7 +47,7 @@ ko.exportProperty = function(owner, publicName, object) {
 ko.version = "3.1.0";
 
 ko.exportSymbol('version', ko.version);
-ko.utils = (function () {
+ko.utils = (function koUtilsScope() {
     function objectForEach(obj, action) {
         for (var prop in obj) {
             if (obj.hasOwnProperty(prop)) {
@@ -615,7 +615,7 @@ if (!Function.prototype['bind']) {
     };
 }
 
-ko.utils.domData = new (function () {
+ko.utils.domData = new (function koDomdataScope() {
     var uniqueId = 0;
     var dataStoreKeyExpandoPropertyName = "__ko__" + (new Date).getTime();
     var dataStore = {};
@@ -627,17 +627,29 @@ ko.utils.domData = new (function () {
             if (!createIfNotFound)
                 return undefined;
             //Start domData logger (name objects s.t. its becomes identifiable on the dom)
-            var nodeName = "(#" + node.id + ")"
-            if (node.id === undefined) {
-                nodeName = "(Comment) " + node.nodeValue;
-            } else if (node.id.length === 0) {
-                if (node.attributes['data-bind'] === undefined) {
-                    nodeName = "(outerHTML) " + node.outerHTML;
-                } else {
-                    nodeName = "(data-bind) " + node.attributes['data-bind'].value;
-                }
+            var nodeName;
+            switch (node.nodeType) {
+                case undefined: //we got a dependent obs disposal callback. prob from foreach $index causing a subscription
+                    nodeName = "(depObsDisposalCB: )";
+                    debugger; //withIfDomDataKey is not longer present in 3.1.0
+                    break;
+                case 8: //comment node
+                    nodeName = "(Comment) " + node.nodeValue;
+                    break;
+                case 1: //element node
+                    nodeName = node.id ? "(#" + node.id + ")"
+                                       : node.attributes['data-bind'] ? "(data-bind) " + node.attributes['data-bind'].value
+                                                                      : "(OuterHTML) " + node.outerHTML
+
+                    break;
+
+                default: debugger; //whats going on here?
+
             }
-            dataStoreKey = node[dataStoreKeyExpandoPropertyName] = "ko" + uniqueId++ + nodeName;
+            
+            var time = new Date();
+            var timeKey = "@(" + time.getMinutes() + "m: " + time.getSeconds() + "s: " + time.getMilliseconds() + "ms)";
+            dataStoreKey = node[dataStoreKeyExpandoPropertyName] = "ko" + uniqueId++ + nodeName + timeKey;
             //End domData logger
 
             dataStore[dataStoreKey] = {};
@@ -674,6 +686,9 @@ ko.utils.domData = new (function () {
         },
         peek: function () {
             return dataStore;
+        },
+        getAllDataForNode: function (node) {
+            return getAll
         }
     };
 })();
@@ -682,7 +697,7 @@ ko.exportSymbol('utils.domData', ko.utils.domData);
 ko.exportSymbol('utils.domData.clear', ko.utils.domData.clear); // Exporting only so specs can clear up after themselves fully
 
 ko.utils.domNodeDisposal = new (function () {
-    var domDataKey = ko.utils.domData.nextKey();
+    var domDataKey = "domDisposal_" + ko.utils.domData.nextKey();
     var cleanableNodeTypes = { 1: true, 8: true, 9: true };       // Element, Comment, Document
     var cleanableNodeTypesWithDescendants = { 1: true, 9: true }; // Element, Document
 
@@ -1556,13 +1571,14 @@ ko.extenders['trackArrayChanges'] = function(target) {
         cachedDiff = diff;
     };
 };
-ko.computed = ko.dependentObservable = function (evaluatorFunctionOrOptions, evaluatorFunctionTarget, options) {
+ko.computed = ko.dependentObservable = function koComputedAndDependentObs(evaluatorFunctionOrOptions, evaluatorFunctionTarget, options) {
     var _latestValue,
         _needsEvaluation = true,
         _isBeingEvaluated = false,
         _suppressDisposalUntilDisposeWhenReturnsFalse = false,
         _isDisposed = false,
         readFunction = evaluatorFunctionOrOptions;
+    readFunction.name = "koDependentObservableReadFunction";
 
     if (readFunction && typeof readFunction == "object") {
         // Single-parameter syntax - everything is on this "options" param
@@ -1780,7 +1796,7 @@ ko.computed = ko.dependentObservable = function (evaluatorFunctionOrOptions, eva
         // technique is intended for KO's internal use only and shouldn't be documented or used
         // by application code, as it's likely to change in a future version of KO.
         if (disposeWhenNodeIsRemoved.nodeType) {
-            disposeWhen = function () {
+            disposeWhen = function dependentObsDisposeWhenCB() {
                 return !ko.utils.domNodeIsAttachedToDocument(disposeWhenNodeIsRemoved) || (disposeWhenOption && disposeWhenOption());
             };
         }
@@ -1793,7 +1809,7 @@ ko.computed = ko.dependentObservable = function (evaluatorFunctionOrOptions, eva
     // Attach a DOM node disposal callback so that the computed will be proactively disposed as soon as the node is
     // removed using ko.removeNode. But skip if isActive is false (there will never be any dependencies to dispose).
     if (disposeWhenNodeIsRemoved && isActive() && disposeWhenNodeIsRemoved.nodeType) {
-        dispose = function() {
+        dispose = function depObsDisposeCB() {
             ko.utils.domNodeDisposal.removeDisposeCallback(disposeWhenNodeIsRemoved, dispose);
             disposeAllSubscriptionsToDependencies();
         };
@@ -2692,7 +2708,7 @@ ko.exportSymbol('bindingProvider', ko.bindingProvider);
         }
     }
 
-    var boundElementDomDataKey = ko.utils.domData.nextKey();
+    var boundElementDomDataKey = "boundElement_" + ko.utils.domData.nextKey();
 
 
     function topologicalSortBindings(bindings) {
@@ -2755,7 +2771,7 @@ ko.exportSymbol('bindingProvider', ko.bindingProvider);
             // Get the binding from the provider within a computed observable so that we can update the bindings whenever
             // the binding context is updated or if the binding provider accesses observables.
             var bindingsUpdater = ko.dependentObservable(
-                function() {
+                function bindingUpdaterDepObs() {
                     bindings = sourceBindings ? sourceBindings(bindingContext, node) : getBindings.call(provider, node, bindingContext);
                     // Register a dependency on the binding context to support obsevable view models.
                     if (bindings && bindingContext._subscribable)
@@ -2776,10 +2792,10 @@ ko.exportSymbol('bindingProvider', ko.bindingProvider);
             // the latest binding value and registers a dependency on the binding updater.
             var getValueAccessor = bindingsUpdater
                 ? function(bindingKey) {
-                    return function() {
+                    return function dynammicBindingValueAccessor() {
                         return evaluateValueAccessor(bindingsUpdater()[bindingKey]);
                     };
-                } : function(bindingKey) {
+                } : function staticBindingValueAccessor(bindingKey) {
                     return bindings[bindingKey];
                 };
 
@@ -2799,7 +2815,7 @@ ko.exportSymbol('bindingProvider', ko.bindingProvider);
             var orderedBindings = topologicalSortBindings(bindings);
 
             // Go through the sorted bindings, calling init and update for each
-            ko.utils.arrayForEach(orderedBindings, function(bindingKeyAndHandler) {
+            ko.utils.arrayForEach(orderedBindings, function bindingExecutor(bindingKeyAndHandler) {
                 // Note that topologicalSortBindings has already filtered out any nonexistent binding handlers,
                 // so bindingKeyAndHandler.handler will always be nonnull.
                 var handlerInitFn = bindingKeyAndHandler.handler["init"],
@@ -2828,7 +2844,7 @@ ko.exportSymbol('bindingProvider', ko.bindingProvider);
                     // Run update in its own computed wrapper
                     if (typeof handlerUpdateFn == "function") {
                         ko.dependentObservable(
-                            function() {
+                            function bindingExecutorDependentObs() {
                                 handlerUpdateFn(node, getValueAccessor(bindingKey), allBindings, bindingContext['$data'], bindingContext);
                             },
                             null,
@@ -2847,7 +2863,7 @@ ko.exportSymbol('bindingProvider', ko.bindingProvider);
         };
     };
 
-    var storedBindingContextDomDataKey = ko.utils.domData.nextKey();
+    var storedBindingContextDomDataKey =  "storedBindingContext_" + ko.utils.domData.nextKey();
     ko.storedBindingContextForNode = function (node, bindingContext) {
         if (arguments.length == 2) {
             ko.utils.domData.set(node, storedBindingContextDomDataKey, bindingContext);
@@ -3441,7 +3457,7 @@ ko.bindingHandlers['options'] = {
             element.scrollTop = previousScrollTop;
     }
 };
-ko.bindingHandlers['options'].optionValueDomDataKey = ko.utils.domData.nextKey();
+ko.bindingHandlers['options'].optionValueDomDataKey = "options_" + ko.utils.domData.nextKey();
 ko.bindingHandlers['selectedOptions'] = {
     'after': ['options', 'foreach'],
     'init': function (element, valueAccessor, allBindings) {
@@ -3792,7 +3808,7 @@ ko.exportSymbol('__tr_ambtns', ko.templateRewriting.applyMemoizedBindingsToNextS
         }
     };
 
-    var dataDomDataPrefix = ko.utils.domData.nextKey() + "_";
+    var dataDomDataPrefix = "dataPrefix_" + ko.utils.domData.nextKey() + "_";
     ko.templateSources.domElement.prototype['data'] = function(key /*, valueToWrite */) {
         if (arguments.length === 1) {
             return ko.utils.domData.get(this.domElement, dataDomDataPrefix + key);
@@ -3806,7 +3822,7 @@ ko.exportSymbol('__tr_ambtns', ko.templateRewriting.applyMemoizedBindingsToNextS
     // For compatibility, you can also read "text"; it will be serialized from the nodes on demand.
     // Writing to "text" is still supported, but then the template data will not be available as DOM nodes.
 
-    var anonymousTemplatesDomDataKey = ko.utils.domData.nextKey();
+    var anonymousTemplatesDomDataKey = "anonTemplate_" + ko.utils.domData.nextKey();
     ko.templateSources.anonymousTemplate = function(element) {
         this.domElement = element;
     }
@@ -3868,7 +3884,7 @@ ko.exportSymbol('__tr_ambtns', ko.templateRewriting.applyMemoizedBindingsToNextS
                 preprocessNode = provider['preprocessNode'];
 
             if (preprocessNode) {
-                invokeForEachNodeInContinuousRange(firstNode, lastNode, function(node, nextNodeInRange) {
+                invokeForEachNodeInContinuousRange(firstNode, lastNode, function preProcessNodeInRange(node, nextNodeInRange) {
                     var nodePreviousSibling = node.previousSibling;
                     var newNodes = preprocessNode.call(provider, node);
                     if (newNodes) {
@@ -3896,11 +3912,11 @@ ko.exportSymbol('__tr_ambtns', ko.templateRewriting.applyMemoizedBindingsToNextS
 
             // Need to applyBindings *before* unmemoziation, because unmemoization might introduce extra nodes (that we don't want to re-bind)
             // whereas a regular applyBindings won't introduce new memoized nodes
-            invokeForEachNodeInContinuousRange(firstNode, lastNode, function(node) {
+            invokeForEachNodeInContinuousRange(firstNode, lastNode, function applyBindingsToNodeInRange(node) {
                 if (node.nodeType === 1 || node.nodeType === 8)
                     ko.applyBindings(bindingContext, node);
             });
-            invokeForEachNodeInContinuousRange(firstNode, lastNode, function(node) {
+            invokeForEachNodeInContinuousRange(firstNode, lastNode, function removeMemoizeToNodeInRange(node) {
                 if (node.nodeType === 1 || node.nodeType === 8)
                     ko.memoization.unmemoizeDomNodeAndDescendants(node, [bindingContext]);
             });
@@ -3961,11 +3977,11 @@ ko.exportSymbol('__tr_ambtns', ko.templateRewriting.applyMemoizedBindingsToNextS
         if (targetNodeOrNodeArray) {
             var firstTargetNode = getFirstNodeFromPossibleArray(targetNodeOrNodeArray);
 
-            var whenToDispose = function () { return (!firstTargetNode) || !ko.utils.domNodeIsAttachedToDocument(firstTargetNode); }; // Passive disposal (on next evaluation)
+            var whenToDispose = function renderTemplateWhenToDispose() { return (!firstTargetNode) || !ko.utils.domNodeIsAttachedToDocument(firstTargetNode); }; // Passive disposal (on next evaluation)
             var activelyDisposeWhenNodeIsRemoved = (firstTargetNode && renderMode == "replaceNode") ? firstTargetNode.parentNode : firstTargetNode;
 
             return ko.dependentObservable( // So the DOM is automatically updated when any dependency changes
-                function () {
+                function renderTemplateDependentObs() {
                     // Ensure we've got a proper binding context to work with
                     var bindingContext = (dataOrBindingContext && (dataOrBindingContext instanceof ko.bindingContext))
                         ? dataOrBindingContext
@@ -4031,7 +4047,7 @@ ko.exportSymbol('__tr_ambtns', ko.templateRewriting.applyMemoizedBindingsToNextS
         }, null, { disposeWhenNodeIsRemoved: targetNode });
     };
 
-    var templateComputedDomDataKey = ko.utils.domData.nextKey();
+    var templateComputedDomDataKey = "templateComputed_" + ko.utils.domData.nextKey();
     function disposeOldComputedAndStoreNewOne(element, newComputed) {
         var oldComputed = ko.utils.domData.get(element, templateComputedDomDataKey);
         if (oldComputed && (typeof(oldComputed.dispose) == 'function'))
@@ -4247,7 +4263,7 @@ ko.exportSymbol('utils.compareArrays', ko.utils.compareArrays);
         return { mappedNodes : mappedNodes, dependentObservable : (dependentObservable.isActive() ? dependentObservable : undefined) };
     }
 
-    var lastMappingResultDomDataKey = ko.utils.domData.nextKey();
+    var lastMappingResultDomDataKey = "lastMapping_" + ko.utils.domData.nextKey();
 
     ko.utils.setDomNodeChildrenFromArrayMapping = function (domNode, array, mapping, options, callbackAfterAddingNodes) {
         // Compare the provided array against the previous one
