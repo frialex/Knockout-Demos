@@ -376,7 +376,7 @@ ko.utils = (function () {
 
                 // IE does not dispose attachEvent handlers automatically (unlike with addEventListener)
                 // so to avoid leaks, we have to remove them manually. See bug #856
-                ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
+                ko.utils.domNodeDisposal.addDisposeCallback(element, function koEventHandlerDisposalCallback() {
                     element.detachEvent(attachEventName, attachEventHandler);
                 });
             } else
@@ -626,7 +626,7 @@ ko.utils.domData = new (function () {
         if (!hasExistingDataStore) {
             if (!createIfNotFound)
                 return undefined;
-            //debugger; //add node name to the key
+            //Start domData logger (name objects s.t. its becomes identifiable on the dom)
             var nodeName = "(#" + node.id + ")"
             if (node.id === undefined) {
                 nodeName = "(Comment) " + node.nodeValue;
@@ -638,6 +638,8 @@ ko.utils.domData = new (function () {
                 }
             }
             dataStoreKey = node[dataStoreKeyExpandoPropertyName] = "ko" + uniqueId++ + nodeName;
+            //End domData logger
+
             dataStore[dataStoreKey] = {};
         }
         return dataStore[dataStoreKey];
@@ -727,13 +729,13 @@ ko.utils.domNodeDisposal = new (function () {
     }
 
     return {
-        addDisposeCallback : function(node, callback) {
+        addDisposeCallback : function koDomNodeDisposalAddCalback(node, callback) {
             if (typeof callback != "function")
                 throw new Error("Callback must be a function");
             getDisposeCallbacksCollection(node, true).push(callback);
         },
 
-        removeDisposeCallback : function(node, callback) {
+        removeDisposeCallback : function koDomNodeDisposalRemoveCallback(node, callback) {
             var callbacksCollection = getDisposeCallbacksCollection(node, false);
             if (callbacksCollection) {
                 ko.utils.arrayRemoveItem(callbacksCollection, callback);
@@ -742,7 +744,7 @@ ko.utils.domNodeDisposal = new (function () {
             }
         },
 
-        cleanNode : function(node) {
+        cleanNode : function koDomNodeDisposalCleanCallback(node) {
             // First clean this node, where applicable
             if (cleanableNodeTypes[node.nodeType]) {
                 cleanSingleNode(node);
@@ -759,7 +761,7 @@ ko.utils.domNodeDisposal = new (function () {
             return node;
         },
 
-        removeNode : function(node) {
+        removeNode : function koDomNodeDisposalRemoveCallback(node) {
             ko.cleanNode(node);
             if (node.parentNode)
                 node.parentNode.removeChild(node);
@@ -1635,7 +1637,7 @@ ko.computed = ko.dependentObservable = function (evaluatorFunctionOrOptions, eva
             // Then, during evaluation, we cross off any that are in fact still being used.
             var disposalCandidates = _subscriptionsToDependencies, disposalCount = _dependenciesCount;
             ko.dependencyDetection.begin({
-                callback: function(subscribable, id) {
+                callback: function koDependencyDetectionCallback(subscribable, id) {
                     if (!_isDisposed) {
                         if (disposalCount && disposalCandidates[id]) {
                             // Don't want to dispose this subscription, as it's still being used
