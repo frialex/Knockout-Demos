@@ -116,7 +116,7 @@ function stopKoDomDataWatchDog() {
     return ko.utils.domData.peek();
 }
 
-startKoDomDataWatchDog();
+//startKoDomDataWatchDog();
 
 
 
